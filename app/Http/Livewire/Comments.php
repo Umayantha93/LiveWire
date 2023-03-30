@@ -19,12 +19,17 @@ class Comments extends Component
 
     public function addComment() 
     {
-        $this->comments[] = 
+        if($this->newComment == ''){
+            return;
+        }
+        array_unshift($this->comments,
         [
             'body' => $this->newComment,
             'created_at' => Carbon::now()->diffForHumans(),
             'creator' => 'Umayantha'
-        ];
+        ]);
+
+        $this->newComment = "";
     }
 
     public function render()
