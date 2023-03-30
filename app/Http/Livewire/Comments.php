@@ -3,19 +3,20 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Comment;
 use Carbon\Carbon;
 class Comments extends Component
 {
-    public $comments = [
-            [
-                'body' => 'i would like to introduce myself as a good laravel developer that work really hard and honest with other members.',
-                'created_at' => '3 min ago',
-                'creator' => 'Umayantha'
-            ]
-        ];
+    public $comments;
 
 
     public $newComment;
+
+    public function mount()
+    {
+        $initialComments = Comment::all();
+        $this->comments = $initialComments;
+    }
 
     public function addComment() 
     {
