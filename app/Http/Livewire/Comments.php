@@ -9,7 +9,6 @@ class Comments extends Component
 {
     public $comments;
 
-
     public $newComment;
 
     public function mount()
@@ -37,6 +36,18 @@ class Comments extends Component
 
         $this->comments->prepend($createdComment);
         $this->newComment = "";
+
+        session()->flash('message', 'Comment successfully created.');
+    }
+    
+    public function remove($commentId)
+    {
+        $comment = Comment::find($commentId);
+        $comment->delete();
+        $this->comments = $this->comments->except($commentId);
+
+        session()->flash('message', 'Comment deleted successfully.');
+        // dd($comment);
     }
 
     public function render()
