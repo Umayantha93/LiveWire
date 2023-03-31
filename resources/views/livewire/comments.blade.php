@@ -12,6 +12,10 @@
             @endif
         </div>
 
+        <section>
+            <input type="file" id="image">
+        </section>
+        
         <form class="my-4 flex" wire:submit.prevent="addComment">    
             <input type="text" class="w-full rounded shadow p-2 mr-2 my-2" placeholder="What's on your mind" wire:model.lazy = "newComment">
             
@@ -32,6 +36,6 @@
             <p class="text-gray-800">{{$comment->body}}</p>
         </div>
         @endforeach
-        {{$comments->links()}}
+        {{$comments->links('livewire.pagination-links')}}
     </div>
 </div>
