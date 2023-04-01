@@ -16,6 +16,15 @@ class Comments extends Component
 
     public $newComment;
 
+    public $image;
+
+    protected $listeners = ['fileUpload' => 'handleFileUpload'];
+
+    public function handleFileUpload($imageData)
+    {
+        $this->image = $imageData;
+    }
+
     // public function mount()
     // {
         // $initialComments = Comment::latest()->paginate(2);
