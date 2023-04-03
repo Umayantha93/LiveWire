@@ -1,0 +1,10 @@
+<div>
+    <h1 class="text-3x1">Support Tickets</h1>
+    @foreach($tickets as $ticket)
+        <div class="rounded border show p-3 my-2 {{$active == $ticket->id ? 'bg-green-200':''}}" wire:click="$emit('ticketSelected', {{$ticket->id}})">
+
+        <p class="text-gray-800">{{$ticket->question}}</p>
+
+        </div>
+        @endforeach
+</div>

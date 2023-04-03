@@ -13,8 +13,5 @@ use App\Models\Comment;
 |
 */
 
-Route::get('/', function () {
-
-    // $comments = Comment::all();
-    return view('welcome');
-});
+Route::get('/', \App\Http\Livewire\Home::class);
+Route::get('/login', \App\Http\Livewire\Login::class);
